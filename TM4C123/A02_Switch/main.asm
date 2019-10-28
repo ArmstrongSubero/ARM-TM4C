@@ -37,8 +37,6 @@ SW1       .equ 0x10                 ; on the left side of the Launchpad board
 SW2       .equ 0x01                 ; on the right side of the Launchpad board
 PA5       .equ 0x40004080           ; PA5 on APB
 
-
-
 SYSCTL_RCGCGPIO_R  .field   0x400FE608,32
 
       .global main
@@ -76,7 +74,7 @@ nopressed
 	.endasmfunc
 
 PortF_Init:  .asmfunc
- 	LDR R1, SYSCTL_RCGCGPIO_R       ; 1) activate clock for Port F
+    LDR R1, SYSCTL_RCGCGPIO_R       ; 1) activate clock for Port F
     LDR R0, [R1]
     ORR R0, R0, #0x20               ; set bit 5 to turn on clock
     STR R0, [R1]
