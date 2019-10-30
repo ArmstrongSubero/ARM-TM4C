@@ -1,0 +1,1 @@
+"./main.obj" "./startup_ccs.obj" "../blinky_ccs.cmd" -llibc.a -l"C:/Users/armst/Desktop/TivaWare/driverlib/ccs/Debug/driverlib.lib" 
