@@ -58,8 +58,8 @@ Delay: .asmfunc
 ; Output: none
 main: .asmfunc
 
-    ; init PLL @ 80 MHz
-    BL PLL_Init
+        ; init PLL @ 80 MHz
+        BL PLL_Init
 
 	; init Port F
 	BL PortF_Init
