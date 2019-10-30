@@ -1,18 +1,18 @@
 ; File: main.asm
- ; Author: Armstrong Subero
- ; Hardware and uC: TM4C123GH6PM (EK-123GXL Lanunchpad)
- ; Program: A05_PLL
- ; Compiler: TI-CGT-ARM 18.12.3.LTS (CCS v9.2)
- ; Program Version: 1.0
- ;
- ; Program Description: This program allows PLL to 80 MHz on TM123GH6PM Launchpad
- ;                      and demonstrates it is working by flashing an LED at
- ;                      a rate of 1 Hz
- ;
- ; Hardware Description: The board uses TIVA C lanuchpad hardware
- ;
- ; Created October 29th, 2019, 7:55 PM
- ; Last Updated: October 29th, 2019, 7:55 PM
+; Author: Armstrong Subero
+; Hardware and uC: TM4C123GH6PM (EK-123GXL Lanunchpad)
+; Program: A05_PLL
+; Compiler: TI-CGT-ARM 18.12.3.LTS (CCS v9.2)
+; Program Version: 1.0
+;
+; Program Description: This program allows PLL to 80 MHz on TM123GH6PM Launchpad
+;                      and demonstrates it is working by flashing an LED at
+;                      a rate of 1 Hz
+;
+; Hardware Description: The board uses TIVA C lanuchpad hardware
+;
+; Created October 29th, 2019, 7:55 PM
+; Last Updated: October 29th, 2019, 7:55 PM
 
        .thumb
        .text
@@ -70,14 +70,14 @@ loop
 	BL PortF_Output
 
 	; delay 500 ms
-    LDR R0, ONEHZDELAY
+        LDR R0, ONEHZDELAY
 	BL Delay
 
 	; turn LED off
 	MOV	R0, #0
 	BL	PortF_Output
 
-    ; delay 500 ms
+        ; delay 500 ms
 	LDR R0, ONEHZDELAY
 	BL Delay
 
@@ -91,7 +91,7 @@ loop
 ; Input: none
 ; Output: none
 PortF_Init:  .asmfunc
- 	LDR R1, SYSCTL_RCGCGPIO_R       ; 1) activate clock for Port F
+    LDR R1, SYSCTL_RCGCGPIO_R       ; 1) activate clock for Port F
     LDR R0, [R1]
     ORR R0, R0, #0x20               ; set bit 5 to turn on clock
     STR R0, [R1]
@@ -130,15 +130,15 @@ PortF_Init:  .asmfunc
 ; Output: none
 PortF_Input: .asmfunc
     ; pointer to Port F data
- 	LDR R1, GPIO_PORTF_DATA_R
+    LDR R1, GPIO_PORTF_DATA_R
 
- 	; read all of Port F
- 	LDR R0, [R1]
+    ; read all of Port F
+    LDR R0, [R1]
 
- 	; read the input pins bits 4, 0
- 	AND R0, R0, #0x11
- 	BX LR
- 	.endasmfunc                        ; end of function
+    ; read the input pins bits 4, 0
+    AND R0, R0, #0x11
+    BX LR
+    .endasmfunc                        ; end of function
 
 ;------------PortF_Output------------
 ; Write an I/O pin on PORTF
@@ -146,11 +146,11 @@ PortF_Input: .asmfunc
 ; Output: none
 PortF_Output: .asmfunc
     ; pointer to Port F data
- 	LDR R1, GPIO_PORTF_DATA_R
+    LDR R1, GPIO_PORTF_DATA_R
 
- 	; write to PF3-1
- 	STR R0, [R1]
- 	BX LR
- 	.endasmfunc           ; end of function
+    ; write to PF3-1
+    STR R0, [R1]
+    BX LR
+    .endasmfunc           ; end of function
 
     .end                  ; end of file
